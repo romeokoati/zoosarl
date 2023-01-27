@@ -2,14 +2,14 @@
 �
 �
 
-###Backend__
-Installer PostgreSQL__
-Configurer la source de donnees dans application.yml.__
-cd backend.__
-Run mvn install.__
-Run mvn spring-boot:run.__
-Spring Boot vas import automatiquement les donnees par defaut contenue dans import.sql.__
-Le server backend tourne sur localhost:8080.__
+###Backend <br />
+Installer PostgreSQL <br />
+Configurer la source de donnees dans application.yml. <br />
+cd backend. <br />
+Run mvn install. <br />
+Run mvn spring-boot:run. <br />
+Spring Boot vas import automatiquement les donnees par defaut contenue dans import.sql. <br />
+Le server backend tourne sur localhost:8080. <br />
 
 ###Frontend__
 Installer Node.js , npm et Angular Cli__
