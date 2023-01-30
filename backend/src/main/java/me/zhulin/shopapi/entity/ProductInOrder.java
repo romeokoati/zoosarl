@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
- * Created By Zhu Lin on 3/14/2018.
+ * Created By Groupe 1 on 3/142022.
  */
 @Entity
 @Data
@@ -23,7 +23,7 @@ public class ProductInOrder {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-//    @JoinColumn(name = "cart_id")
+    // @JoinColumn(name = "cart_id")
     @JsonIgnore
     private Cart cart;
 
@@ -31,7 +31,6 @@ public class ProductInOrder {
     @JoinColumn(name = "order_id")
     @JsonIgnore
     private OrderMain orderMain;
-
 
     @NotEmpty
     private String productId;
@@ -74,7 +73,6 @@ public class ProductInOrder {
     @Min(1)
     private Integer count;
 
-
     public ProductInOrder(ProductInfo productInfo, Integer quantity) {
         this.productId = productInfo.getProductId();
         this.productName = productInfo.getProductName();
@@ -103,9 +101,12 @@ public class ProductInOrder {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (!super.equals(o))
+            return false;
         ProductInOrder that = (ProductInOrder) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(productId, that.productId) &&
@@ -119,6 +120,7 @@ public class ProductInOrder {
     @Override
     public int hashCode() {
 
-        return Objects.hash(super.hashCode(), id, productId, productName, productDescription, productIcon, categoryType, productPrice);
+        return Objects.hash(super.hashCode(), id, productId, productName, productDescription, productIcon, categoryType,
+                productPrice);
     }
 }

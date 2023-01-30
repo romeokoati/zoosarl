@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.api;
 
-
 import me.zhulin.shopapi.entity.Cart;
 import me.zhulin.shopapi.entity.ProductInOrder;
 import me.zhulin.shopapi.entity.User;
@@ -20,7 +19,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Created By Zhu Lin on 3/11/2018.
+ * Created By Groupe 1 on 6/12/2022.
  */
 @CrossOrigin
 @RestController
@@ -38,7 +37,8 @@ public class CartController {
     ProductInOrderRepository productInOrderRepository;
 
     @PostMapping("")
-    public ResponseEntity<Cart> mergeCart(@RequestBody Collection<ProductInOrder> productInOrders, Principal principal) {
+    public ResponseEntity<Cart> mergeCart(@RequestBody Collection<ProductInOrder> productInOrders,
+            Principal principal) {
         User user = userService.findOne(principal.getName());
         try {
             cartService.mergeLocalCart(productInOrders, user);
@@ -54,7 +54,6 @@ public class CartController {
         return cartService.getCart(user);
     }
 
-
     @PostMapping("/add")
     public boolean addToCart(@RequestBody ItemForm form, Principal principal) {
         var productInfo = productService.findOne(form.getProductId());
@@ -67,19 +66,19 @@ public class CartController {
     }
 
     @PutMapping("/{itemId}")
-    public ProductInOrder modifyItem(@PathVariable("itemId") String itemId, @RequestBody Integer quantity, Principal principal) {
+    public ProductInOrder modifyItem(@PathVariable("itemId") String itemId, @RequestBody Integer quantity,
+            Principal principal) {
         User user = userService.findOne(principal.getName());
-         productInOrderService.update(itemId, quantity, user);
+        productInOrderService.update(itemId, quantity, user);
         return productInOrderService.findOne(itemId, user);
     }
 
     @DeleteMapping("/{itemId}")
     public void deleteItem(@PathVariable("itemId") String itemId, Principal principal) {
         User user = userService.findOne(principal.getName());
-         cartService.delete(itemId, user);
-         // flush memory into DB
+        cartService.delete(itemId, user);
+        // flush memory into DB
     }
-
 
     @PostMapping("/checkout")
     public ResponseEntity checkout(Principal principal) {
@@ -87,6 +86,5 @@ public class CartController {
         cartService.checkout(user);
         return ResponseEntity.ok(null);
     }
-
 
 }

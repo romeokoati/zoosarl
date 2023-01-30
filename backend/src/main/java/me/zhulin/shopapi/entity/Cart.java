@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created By Zhu Lin on 1/2/2019.
+ * Created By Groupe 1 on 1/2/2019.
  */
 @Data
 @Entity
@@ -25,12 +25,10 @@ public class Cart implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JsonIgnore
-//    @JoinColumn(name = "email", referencedColumnName = "email")
+    // @JoinColumn(name = "email", referencedColumnName = "email")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, orphanRemoval = true,
-            mappedBy = "cart")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "cart")
     private Set<ProductInOrder> products = new HashSet<>();
 
     @Override
@@ -42,7 +40,7 @@ public class Cart implements Serializable {
     }
 
     public Cart(User user) {
-        this.user  = user;
+        this.user = user;
     }
 
 }

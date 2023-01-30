@@ -11,9 +11,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-
 /**
- * Created By Zhu Lin on 1/1/2019.
+ * Created By Groupe 1 on 1/1/2019.
  */
 @Component
 public class JwtProvider {

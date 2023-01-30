@@ -6,13 +6,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * Created By Zhu Lin on 3/9/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Integer> {
     // Some category
     List<ProductCategory> findByCategoryTypeInOrderByCategoryTypeAsc(List<Integer> categoryTypes);
+
     // All category
     List<ProductCategory> findAllByOrderByCategoryType();
+
     // One category
     ProductCategory findByCategoryType(Integer categoryType);
 }

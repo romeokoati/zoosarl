@@ -12,19 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created By Zhu Lin on 1/1/2019.
+ * Created By Groupe 1 on 1/1/2019.
  */
 @Component
 public class JwtEntryPoint implements AuthenticationEntryPoint {
-
 
     private static final Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
 
     // called if authentication failed
     @Override
     public void commence(HttpServletRequest request,
-                         HttpServletResponse response,
-                         AuthenticationException e)
+            HttpServletResponse response,
+            AuthenticationException e)
             throws IOException {
 
         logger.error("Unauthorized error. Message - {}", e.getMessage());

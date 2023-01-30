@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.service.impl;
 
-
 import me.zhulin.shopapi.entity.Cart;
 import me.zhulin.shopapi.entity.User;
 import me.zhulin.shopapi.enums.ResultEnum;
@@ -17,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 
 /**
- * Created By Zhu Lin on 3/13/2018.
+ * Created By Groupe 1 on 3/132022.
  */
 @Service
 @DependsOn("passwordEncoder")
@@ -42,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User save(User user) {
-        //register
+        // register
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         try {
             User savedUser = userRepository.save(user);

@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.service.impl;
 
-
 import me.zhulin.shopapi.entity.Cart;
 import me.zhulin.shopapi.entity.OrderMain;
 import me.zhulin.shopapi.entity.ProductInOrder;
@@ -23,7 +22,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Created By Zhu Lin on 3/11/2018.
+ * Created By Groupe 1 on 6/12/2022.
  */
 @Service
 public class CartServiceImpl implements CartService {
@@ -52,7 +51,8 @@ public class CartServiceImpl implements CartService {
         Cart finalCart = user.getCart();
         productInOrders.forEach(productInOrder -> {
             Set<ProductInOrder> set = finalCart.getProducts();
-            Optional<ProductInOrder> old = set.stream().filter(e -> e.getProductId().equals(productInOrder.getProductId())).findFirst();
+            Optional<ProductInOrder> old = set.stream()
+                    .filter(e -> e.getProductId().equals(productInOrder.getProductId())).findFirst();
             ProductInOrder prod;
             if (old.isPresent()) {
                 prod = old.get();
@@ -71,7 +71,7 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional
     public void delete(String itemId, User user) {
-        if(itemId.equals("") || user == null) {
+        if (itemId.equals("") || user == null) {
             throw new MyException(ResultEnum.ORDER_STATUS_ERROR);
         }
 

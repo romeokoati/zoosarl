@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created By Zhu Lin on 1/2/2019.
+ * Created By Groupe 1 on 1/2/2019.
  */
 
 public interface CartRepository extends JpaRepository<Cart, Integer> {

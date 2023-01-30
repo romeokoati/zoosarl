@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * Created By Zhu Lin on 3/10/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 @Entity
 @Data
@@ -48,8 +48,7 @@ public class ProductInfo implements Serializable {
     @ColumnDefault("0")
     private Integer productStatus;
 
-
-   /** 类目编号. */
+    /** 类目编号. */
     @ColumnDefault("0")
     private Integer categoryType;
 

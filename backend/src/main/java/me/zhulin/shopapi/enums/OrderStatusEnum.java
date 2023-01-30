@@ -1,15 +1,14 @@
 package me.zhulin.shopapi.enums;
 
 /**
- * Created By Zhu Lin on 3/14/2018.
+ * Created By Groupe 1 on 3/142022.
  */
 public enum OrderStatusEnum implements CodeEnum {
     NEW(0, "New OrderMain"),
     FINISHED(1, "Finished"),
-    CANCELED(2, "Canceled")
-    ;
+    CANCELED(2, "Canceled");
 
-    private  int code;
+    private int code;
     private String msg;
 
     OrderStatusEnum(Integer code, String msg) {

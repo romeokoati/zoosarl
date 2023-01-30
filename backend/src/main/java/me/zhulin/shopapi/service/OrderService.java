@@ -1,12 +1,11 @@
 package me.zhulin.shopapi.service;
 
-
 import me.zhulin.shopapi.entity.OrderMain;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
- * Created By Zhu Lin on 3/14/2018.
+ * Created By Groupe 1 on 3/142022.
  */
 
 public interface OrderService {
@@ -19,7 +18,6 @@ public interface OrderService {
     Page<OrderMain> findByBuyerPhone(String phone, Pageable pageable);
 
     OrderMain findOne(Long orderId);
-
 
     OrderMain finish(Long orderId);
 

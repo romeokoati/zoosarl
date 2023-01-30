@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * Created By Zhu Lin on 3/10/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 @CrossOrigin
 @RestController
@@ -29,7 +29,7 @@ public class ProductController {
 
     @GetMapping("/product")
     public Page<ProductInfo> findAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                     @RequestParam(value = "size", defaultValue = "3") Integer size) {
+            @RequestParam(value = "size", defaultValue = "3") Integer size) {
         PageRequest request = PageRequest.of(page - 1, size);
         return productService.findAll(request);
     }
@@ -39,17 +39,18 @@ public class ProductController {
 
         ProductInfo productInfo = productService.findOne(productId);
 
-//        // Product is not available
-//        if (productInfo.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
-//            productInfo = null;
-//        }
+        // // Product is not available
+        // if (productInfo.getProductStatus().equals(ProductStatusEnum.DOWN.getCode()))
+        // {
+        // productInfo = null;
+        // }
 
         return productInfo;
     }
 
     @PostMapping("/seller/product/new")
     public ResponseEntity create(@Valid @RequestBody ProductInfo product,
-                                 BindingResult bindingResult) {
+            BindingResult bindingResult) {
         ProductInfo productIdExists = productService.findOne(product.getProductId());
         if (productIdExists != null) {
             bindingResult
@@ -64,8 +65,8 @@ public class ProductController {
 
     @PutMapping("/seller/product/{id}/edit")
     public ResponseEntity edit(@PathVariable("id") String productId,
-                               @Valid @RequestBody ProductInfo product,
-                               BindingResult bindingResult) {
+            @Valid @RequestBody ProductInfo product,
+            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(bindingResult);
         }

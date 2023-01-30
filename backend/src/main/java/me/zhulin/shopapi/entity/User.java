@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
- * Created By Zhu Lin on 3/12/2018.
+ * Created By Groupe 1 on 3/122022.
  */
 @Entity
 @Data
@@ -43,11 +43,8 @@ public class User implements Serializable {
     private String role = "ROLE_CUSTOMER";
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore  // fix bi-direction toString() recursion problem
+    @JsonIgnore // fix bi-direction toString() recursion problem
     private Cart cart;
-
-
-
 
     @Override
     public String toString() {
@@ -64,4 +61,3 @@ public class User implements Serializable {
     }
 
 }
-

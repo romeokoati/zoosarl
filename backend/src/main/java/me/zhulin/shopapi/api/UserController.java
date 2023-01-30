@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 /**
- * Created By Zhu Lin on 1/1/2019.
+ * Created By Groupe 1 on 1/1/2019.
  */
 @CrossOrigin
 @RestController
@@ -27,7 +27,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
 
     @Autowired
     JwtProvider jwtProvider;
@@ -52,7 +51,6 @@ public class UserController {
         }
     }
 
-
     @PostMapping("/register")
     public ResponseEntity<User> save(@RequestBody User user) {
         try {
@@ -66,7 +64,8 @@ public class UserController {
     public ResponseEntity<User> update(@RequestBody User user, Principal principal) {
 
         try {
-            if (!principal.getName().equals(user.getEmail())) throw new IllegalArgumentException();
+            if (!principal.getName().equals(user.getEmail()))
+                throw new IllegalArgumentException();
             return ResponseEntity.ok(userService.update(user));
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();

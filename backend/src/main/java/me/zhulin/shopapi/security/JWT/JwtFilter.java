@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created By Zhu Lin on 1/1/2019.
+ * Created By Groupe 1 on 1/1/2019.
  */
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -27,7 +27,8 @@ public class JwtFilter extends OncePerRequestFilter {
     private UserService userService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+            FilterChain filterChain) throws ServletException, IOException {
         String jwt = getToken(httpServletRequest);
         if (jwt != null && jwtProvider.validate(jwt)) {
             try {
@@ -38,8 +39,8 @@ public class JwtFilter extends OncePerRequestFilter {
                 SimpleGrantedAuthority sga = new SimpleGrantedAuthority(user.getRole());
                 ArrayList<SimpleGrantedAuthority> list = new ArrayList<>();
                 list.add(sga);
-                UsernamePasswordAuthenticationToken auth
-                        = new UsernamePasswordAuthenticationToken(user.getEmail(), null, list);
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user.getEmail(),
+                        null, list);
                 SecurityContextHolder.getContext().setAuthentication(auth);
 
             } catch (Exception e) {

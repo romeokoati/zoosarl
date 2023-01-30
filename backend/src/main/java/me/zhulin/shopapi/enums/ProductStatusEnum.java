@@ -3,13 +3,13 @@ package me.zhulin.shopapi.enums;
 import lombok.Getter;
 
 /**
- * Created By Zhu Lin on 3/9/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 @Getter
-public enum ProductStatusEnum implements CodeEnum{
+public enum ProductStatusEnum implements CodeEnum {
     UP(0, "Available"),
-    DOWN(1, "Unavailable")
-    ;
+    DOWN(1, "Unavailable");
+
     private Integer code;
     private String message;
 
@@ -20,8 +20,9 @@ public enum ProductStatusEnum implements CodeEnum{
 
     public String getStatus(Integer code) {
 
-        for(ProductStatusEnum statusEnum : ProductStatusEnum.values()) {
-            if(statusEnum.getCode() == code) return statusEnum.getMessage();
+        for (ProductStatusEnum statusEnum : ProductStatusEnum.values()) {
+            if (statusEnum.getCode() == code)
+                return statusEnum.getMessage();
         }
         return "";
     }

@@ -18,7 +18,7 @@ import java.util.Set;
 
 /**
  * OrderMain contains User info and products in the order
- * Created By Zhu Lin on 3/14/2018.
+ * Created By Groupe 1 on 3/142022.
  */
 @Entity
 @Data
@@ -32,9 +32,7 @@ public class OrderMain implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "orderMain")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderMain")
     private Set<ProductInOrder> products = new HashSet<>();
 
     @NotEmpty
@@ -71,7 +69,8 @@ public class OrderMain implements Serializable {
         this.buyerName = buyer.getName();
         this.buyerPhone = buyer.getPhone();
         this.buyerAddress = buyer.getAddress();
-        this.orderAmount = buyer.getCart().getProducts().stream().map(item -> item.getProductPrice().multiply(new BigDecimal(item.getCount())))
+        this.orderAmount = buyer.getCart().getProducts().stream()
+                .map(item -> item.getProductPrice().multiply(new BigDecimal(item.getCount())))
                 .reduce(BigDecimal::add)
                 .orElse(new BigDecimal(0));
         this.orderStatus = 0;

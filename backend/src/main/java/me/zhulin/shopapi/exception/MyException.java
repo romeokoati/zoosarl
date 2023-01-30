@@ -1,10 +1,9 @@
 package me.zhulin.shopapi.exception;
 
-
 import me.zhulin.shopapi.enums.ResultEnum;
 
 /**
- * Created By Zhu Lin on 3/10/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 public class MyException extends RuntimeException {
 

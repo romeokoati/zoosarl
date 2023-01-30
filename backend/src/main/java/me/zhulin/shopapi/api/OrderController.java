@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.api;
 
-
 import me.zhulin.shopapi.entity.OrderMain;
 import me.zhulin.shopapi.entity.ProductInOrder;
 import me.zhulin.shopapi.service.OrderService;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 /**
- * Created By Zhu Lin on 3/14/2018.
+ * Created By Groupe 1 on 3/142022.
  */
 @RestController
 @CrossOrigin
@@ -29,8 +28,8 @@ public class OrderController {
 
     @GetMapping("/order")
     public Page<OrderMain> orderList(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                     @RequestParam(value = "size", defaultValue = "10") Integer size,
-                                     Authentication authentication) {
+            @RequestParam(value = "size", defaultValue = "10") Integer size,
+            Authentication authentication) {
         PageRequest request = PageRequest.of(page - 1, size);
         Page<OrderMain> orderPage;
         if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CUSTOMER"))) {
@@ -41,11 +40,11 @@ public class OrderController {
         return orderPage;
     }
 
-
     @PatchMapping("/order/cancel/{id}")
     public ResponseEntity<OrderMain> cancel(@PathVariable("id") Long orderId, Authentication authentication) {
         OrderMain orderMain = orderService.findOne(orderId);
-        if (!authentication.getName().equals(orderMain.getBuyerEmail()) && authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CUSTOMER"))) {
+        if (!authentication.getName().equals(orderMain.getBuyerEmail())
+                && authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CUSTOMER"))) {
 
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

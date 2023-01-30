@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.api;
 
-
 import me.zhulin.shopapi.entity.ProductCategory;
 import me.zhulin.shopapi.entity.ProductInfo;
 import me.zhulin.shopapi.service.CategoryService;
@@ -12,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created By Zhu Lin on 3/10/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 @RestController
 @CrossOrigin
@@ -21,7 +20,6 @@ public class CategoryController {
     CategoryService categoryService;
     @Autowired
     ProductService productService;
-
 
     /**
      * Show products in category
@@ -33,8 +31,8 @@ public class CategoryController {
      */
     @GetMapping("/category/{type}")
     public CategoryPage showOne(@PathVariable("type") Integer categoryType,
-                                @RequestParam(value = "page", defaultValue = "1") Integer page,
-                                @RequestParam(value = "size", defaultValue = "3") Integer size) {
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "3") Integer size) {
 
         ProductCategory cat = categoryService.findByCategoryType(categoryType);
         PageRequest request = PageRequest.of(page - 1, size);

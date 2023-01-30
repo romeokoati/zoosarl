@@ -4,7 +4,7 @@ import me.zhulin.shopapi.entity.ProductInOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Created By Zhu Lin on 3/14/2018.
+ * Created By Groupe 1 on 3/142022.
  */
 public interface ProductInOrderRepository extends JpaRepository<ProductInOrder, Long> {
 

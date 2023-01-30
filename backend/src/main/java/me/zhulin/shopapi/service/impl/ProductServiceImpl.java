@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.service.impl;
 
-
 import me.zhulin.shopapi.entity.ProductInfo;
 import me.zhulin.shopapi.enums.ProductStatusEnum;
 import me.zhulin.shopapi.enums.ResultEnum;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created By Zhu Lin on 3/10/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -35,7 +34,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<ProductInfo> findUpAll(Pageable pageable) {
-        return productInfoRepository.findAllByProductStatusOrderByProductIdAsc(ProductStatusEnum.UP.getCode(),pageable);
+        return productInfoRepository.findAllByProductStatusOrderByProductIdAsc(ProductStatusEnum.UP.getCode(),
+                pageable);
     }
 
     @Override
@@ -52,7 +52,8 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void increaseStock(String productId, int amount) {
         ProductInfo productInfo = findOne(productId);
-        if (productInfo == null) throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
+        if (productInfo == null)
+            throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
 
         int update = productInfo.getProductStock() + amount;
         productInfo.setProductStock(update);
@@ -63,10 +64,12 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void decreaseStock(String productId, int amount) {
         ProductInfo productInfo = findOne(productId);
-        if (productInfo == null) throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
+        if (productInfo == null)
+            throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
 
         int update = productInfo.getProductStock() - amount;
-        if(update <= 0) throw new MyException(ResultEnum.PRODUCT_NOT_ENOUGH );
+        if (update <= 0)
+            throw new MyException(ResultEnum.PRODUCT_NOT_ENOUGH);
 
         productInfo.setProductStock(update);
         productInfoRepository.save(productInfo);
@@ -76,13 +79,14 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public ProductInfo offSale(String productId) {
         ProductInfo productInfo = findOne(productId);
-        if (productInfo == null) throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
+        if (productInfo == null)
+            throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
 
         if (productInfo.getProductStatus() == ProductStatusEnum.DOWN.getCode()) {
             throw new MyException(ResultEnum.PRODUCT_STATUS_ERROR);
         }
 
-        //更新
+        // 更新
         productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         return productInfoRepository.save(productInfo);
     }
@@ -91,13 +95,14 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public ProductInfo onSale(String productId) {
         ProductInfo productInfo = findOne(productId);
-        if (productInfo == null) throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
+        if (productInfo == null)
+            throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
 
         if (productInfo.getProductStatus() == ProductStatusEnum.UP.getCode()) {
             throw new MyException(ResultEnum.PRODUCT_STATUS_ERROR);
         }
 
-        //更新
+        // 更新
         productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
         return productInfoRepository.save(productInfo);
     }
@@ -107,10 +112,9 @@ public class ProductServiceImpl implements ProductService {
 
         // if null throw exception
         categoryService.findByCategoryType(productInfo.getCategoryType());
-        if(productInfo.getProductStatus() > 1) {
+        if (productInfo.getProductStatus() > 1) {
             throw new MyException(ResultEnum.PRODUCT_STATUS_ERROR);
         }
-
 
         return productInfoRepository.save(productInfo);
     }
@@ -123,10 +127,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(String productId) {
         ProductInfo productInfo = findOne(productId);
-        if (productInfo == null) throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
+        if (productInfo == null)
+            throw new MyException(ResultEnum.PRODUCT_NOT_EXIST);
         productInfoRepository.delete(productInfo);
 
     }
-
 
 }

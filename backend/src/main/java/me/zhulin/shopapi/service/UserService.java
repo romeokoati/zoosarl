@@ -1,12 +1,11 @@
 package me.zhulin.shopapi.service;
 
-
 import me.zhulin.shopapi.entity.User;
 
 import java.util.Collection;
 
 /**
- * Created By Zhu Lin on 3/13/2018.
+ * Created By Groupe 1 on 3/132022.
  */
 public interface UserService {
     User findOne(String email);

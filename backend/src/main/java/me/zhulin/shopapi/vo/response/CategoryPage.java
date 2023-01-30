@@ -4,7 +4,7 @@ import me.zhulin.shopapi.entity.ProductInfo;
 import org.springframework.data.domain.Page;
 
 /**
- * Created By Zhu Lin on 12/28/2018.
+ * Created By Groupe 1 on 12/282022.
  */
 public class CategoryPage {
     private String category;

@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.service.impl;
 
-
 import me.zhulin.shopapi.entity.OrderMain;
 import me.zhulin.shopapi.entity.ProductInOrder;
 import me.zhulin.shopapi.entity.ProductInfo;
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created By Zhu Lin on 3/14/2018.
+ * Created By Groupe 1 on 3/142022.
  */
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -58,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderMain findOne(Long orderId) {
         OrderMain orderMain = orderRepository.findByOrderId(orderId);
-        if(orderMain == null) {
+        if (orderMain == null) {
             throw new MyException(ResultEnum.ORDER_NOT_FOUND);
         }
         return orderMain;
@@ -68,7 +67,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public OrderMain finish(Long orderId) {
         OrderMain orderMain = findOne(orderId);
-        if(!orderMain.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
+        if (!orderMain.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
             throw new MyException(ResultEnum.ORDER_STATUS_ERROR);
         }
 
@@ -81,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public OrderMain cancel(Long orderId) {
         OrderMain orderMain = findOne(orderId);
-        if(!orderMain.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
+        if (!orderMain.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
             throw new MyException(ResultEnum.ORDER_STATUS_ERROR);
         }
 
@@ -90,9 +89,9 @@ public class OrderServiceImpl implements OrderService {
 
         // Restore Stock
         Iterable<ProductInOrder> products = orderMain.getProducts();
-        for(ProductInOrder productInOrder : products) {
+        for (ProductInOrder productInOrder : products) {
             ProductInfo productInfo = productInfoRepository.findByProductId(productInOrder.getProductId());
-            if(productInfo != null) {
+            if (productInfo != null) {
                 productService.increaseStock(productInOrder.getProductId(), productInOrder.getCount());
             }
         }

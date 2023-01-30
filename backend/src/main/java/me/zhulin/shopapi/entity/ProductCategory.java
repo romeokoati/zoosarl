@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created By Zhu Lin on 3/9/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 @Entity
 @Data
@@ -29,7 +29,6 @@ public class ProductCategory implements Serializable {
     private Date createTime;
 
     private Date updateTime;
-
 
     public ProductCategory() {
     }

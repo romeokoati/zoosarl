@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { Role } from \"../enum/Role\";\nvar User = /** @class */function () {\n  function User() {\n    this.active = true;\n    this.role = Role.Customer;\n  }\n  return User;\n}();\nexport { User };","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

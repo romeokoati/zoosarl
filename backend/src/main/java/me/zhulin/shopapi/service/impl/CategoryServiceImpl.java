@@ -1,6 +1,5 @@
 package me.zhulin.shopapi.service.impl;
 
-
 import me.zhulin.shopapi.entity.ProductCategory;
 import me.zhulin.shopapi.enums.ResultEnum;
 import me.zhulin.shopapi.exception.MyException;
@@ -13,33 +12,33 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created By Zhu Lin on 3/10/2018.
+ * Created By Groupe 1 on 3/12/2022.
  */
 @Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     ProductCategoryRepository productCategoryRepository;
 
-
-
     @Override
     public List<ProductCategory> findAll() {
         List<ProductCategory> res = productCategoryRepository.findAllByOrderByCategoryType();
-      //  res.sort(Comparator.comparing(ProductCategory::getCategoryType));
+        // res.sort(Comparator.comparing(ProductCategory::getCategoryType));
         return res;
     }
 
     @Override
     public ProductCategory findByCategoryType(Integer categoryType) {
         ProductCategory res = productCategoryRepository.findByCategoryType(categoryType);
-        if(res == null) throw new MyException(ResultEnum.CATEGORY_NOT_FOUND);
+        if (res == null)
+            throw new MyException(ResultEnum.CATEGORY_NOT_FOUND);
         return res;
     }
 
     @Override
     public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
-        List<ProductCategory> res = productCategoryRepository.findByCategoryTypeInOrderByCategoryTypeAsc(categoryTypeList);
-       //res.sort(Comparator.comparing(ProductCategory::getCategoryType));
+        List<ProductCategory> res = productCategoryRepository
+                .findByCategoryTypeInOrderByCategoryTypeAsc(categoryTypeList);
+        // res.sort(Comparator.comparing(ProductCategory::getCategoryType));
         return res;
     }
 
@@ -48,7 +47,5 @@ public class CategoryServiceImpl implements CategoryService {
     public ProductCategory save(ProductCategory productCategory) {
         return productCategoryRepository.save(productCategory);
     }
-
-
 
 }
