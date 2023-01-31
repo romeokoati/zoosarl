@@ -12,12 +12,15 @@ import {ProductListComponent} from "./pages/product-list/product.list.component"
 import {UserDetailComponent} from "./pages/user-edit/user-detail.component";
 import {ProductEditComponent} from "./pages/product-edit/product-edit.component";
 import {Role} from "./enum/Role";
+import {CnnComponent} from './pages/cnn/cnn.component';
+
 
 const routes: Routes = [
     {path: '', redirectTo: '/product', pathMatch: 'full'},
     {path: 'product/:id', component: DetailComponent},
     {path: 'category/:id', component: CardComponent},
     {path: 'product', component: CardComponent},
+    {path: 'cnn', component: CnnComponent},
     {path: 'category', component: CardComponent},
     {path: 'login', component: LoginComponent},
     {path: 'logout', component: LoginComponent},

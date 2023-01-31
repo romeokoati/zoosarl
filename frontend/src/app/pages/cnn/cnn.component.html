@@ -1,0 +1,27 @@
+<h1 align="center" class="display-4 mb-5">CNN</h1>
+<div style="width:40%; margin: 25px auto">
+
+    <div class="text-center">
+        <input class="form-control" type="file" 
+                (change)="onChange($event)">
+      
+        <button (click)="onUpload()" 
+            class="btn btn-success">
+            Upload
+        </button>
+    </div>
+      
+    <!-- Shareable short link of  uploaded file -->
+    <div class="container text-center jumbotron"
+        *ngIf="shortLink">
+        <h2> Visit your product animal here</h2>
+        <a (click)="getCategoryRoute('{{shortLink}}','{{shortKey}}.jpg')"
+                    href="javascript:void(0)">CLick here to get product for your animal</a>
+    </div>
+      
+    <!--Flag variable is used here-->
+    <div class="container" *ngIf="loading">
+        <h3>Loading ...</h3>
+    </div>
+
+</div>
